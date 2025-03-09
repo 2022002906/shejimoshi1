@@ -1,0 +1,27 @@
+import math
+
+def trapezoidal_rule(f, a, b, n):
+
+    h = (b - a) / n  # 计算每个梯形的宽度
+    integral = 0.5 * (f(a) + f(b))  # 初始化积分值为端点的平均值
+
+    for i in range(1, n):
+        integral += f(a + i * h)  # 累加中间点的函数值
+
+    integral *= h  # 乘以梯形宽度
+    return integral
+
+def main():
+    # 用户输入
+    a = float(input("请输入积分区间的下限 a: "))
+    b = float(input("请输入积分区间的上限 b: "))
+    n = int(input("请输入区间切分的段数 n: "))
+
+    # 计算 sin 函数的积分值
+    integral_value = trapezoidal_rule(math.sin, a, b, n)
+
+    # 输出结果
+    print(f"sin(x) 在区间 [{a}, {b}] 上的积分值为: {integral_value:.6f}")
+
+if __name__ == "__main__":
+    main()
